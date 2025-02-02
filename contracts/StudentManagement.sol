@@ -32,7 +32,6 @@ contract StudentManagementBoard {
         _;
     }
 
-
     //custom function to add authorized users
     function addAdminRole(address user) external onlyOwner {
         authorizedUsers[user] = true;
@@ -73,6 +72,30 @@ contract StudentManagementBoard {
     ) public view returns (Student memory student_) {
         require(_studentId < studentId, "Student ID does not exist");
         student_ = students[_studentId];
+    }
+
+    function getStudentName(
+        uint8 _studentId
+    ) public view returns (string memory) {
+        require(_studentId < studentId, "Student ID does not exist");
+        return students[_studentId].name;
+    }
+
+    function getStudentAge(uint8 _studentId) public view returns (uint8) {
+        require(_studentId < studentId, "Student ID does not exist");
+        return students[_studentId].age;
+    }
+
+    function getStudentClass(
+        uint8 _studentId
+    ) public view returns (string memory) {
+        require(_studentId < studentId, "Student ID does not exist");
+        return students[_studentId].class;
+    }
+
+    function getStudentGender(uint8 _studentId) public view returns (Gender) {
+        require(_studentId < studentId, "Student ID does not exist");
+        return students[_studentId].gender;
     }
 
     // Function to get all students
