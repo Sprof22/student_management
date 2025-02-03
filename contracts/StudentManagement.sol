@@ -41,6 +41,9 @@ contract StudentManagementBoard {
         authorizedUsers[user] = false;
     }
 
+    event AdminRoleAdded(address indexed admin);
+    event AdminRoleRemoved(address indexed admin);
+
     modifier onlyAuthorized() {
         require(
             msg.sender == owner || authorizedUsers[msg.sender],
